@@ -1,6 +1,7 @@
-def testtest_test():
-  assert 1 == 1
+def test_user_age_is_43(user):
+  print('check if user age is 43')
+  assert user.age == 43
 
-
-# def foo():
-#   pass
+def test_user_age_is_42(user):
+  print('check if user age is 42')
+  assert user.age == 42
