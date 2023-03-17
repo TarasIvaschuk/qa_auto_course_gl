@@ -1,5 +1,6 @@
 #python environment
 py311/
+unit_tests/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
