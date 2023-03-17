@@ -2,6 +2,9 @@
 py311/
 unit_tests/
 
+#jupyter notebook files
+*.ipynb
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
