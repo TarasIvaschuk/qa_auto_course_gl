@@ -1,33 +1,39 @@
-from providers.CSVProvider import CSVProvider
+import sys
 
+sys.path.append('..\src\config')
+
+from providers.EnvProvider import EnvProvider
+from providers.CSVProvider import CSVProvider
 
 class Config:
     def __init__(self):
         self._d = {}
-        # do actual register what we want to use in the test
+        # register the key what we want to use in the test
         self.register('BASE_URL')
-        pass
+        
 
     def register(self, k):
-        print('register')
-        # if it is not in provider list throw
-        #
-        # an error
-        keys = CSVProvider().getData()
+        self.providers = [
+            CSVProvider(),
+            EnvProvider(),
+        ]
+        for p in self.providers:
+            v = p.getVal(k)
+            if v is not None:
+                self._d[k] = v
+        if self._d.get(k,None) is None:
+            raise Exception ('The key is not found in config files')
+        print(f'{k} is successfully registered!')
 
-        if k not in keys:
-            raise Exception('No key provided')
-
-        # otherwise add a key to dictionary
-        self._d[k] = keys[k]
 
     def set(self, k, v):
-        print('set')
         self._d[k] = v
 
     def get(self, k):
-        print('get')
-        return self._d.get(k, None)
+        v =  self._d.get(k, None)
+        if v is None:
+            raise Exception('Varible is not registered in config')
+        return v
 
 
-Config().get('BASE_URL')
+# Config()
