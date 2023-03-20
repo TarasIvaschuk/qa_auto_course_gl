@@ -1,7 +1,4 @@
-import sys
-sys.path.append('../src/config')
-
-from conf import Config
+from src.config.conf import Config
 
 def test_user_age_is_43(user):
   print('check if user age is 43')
