@@ -4,6 +4,7 @@ class CSVProvider:
         self._separator = ","
         self._delim = "\""
         self._d = {}
+        self._createDict()
 
     def _processRow(self, r):
         k,v = [
@@ -21,7 +22,5 @@ class CSVProvider:
                 k,v = self._processRow(row)
                 self._d[k] = v
 
-    def  getData(self):
-        if not len(self._d):
-            self._createDict()
-        return self._d
+    def  getVal(self,k):
+        return self._d.get(k,None)
