@@ -1,6 +1,6 @@
 class CSVProvider:
     def __init__(self):
-        self._f = 'C:/Users/taras.ivashchuk/qa_auto/config/providers/data.csv'
+        self._f = 'C:/Users/taras.ivashchuk/qa_auto/src/config/providers/data.csv'
         self._separator = ","
         self._delim = "\""
         self._d = {}
