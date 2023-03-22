@@ -1,6 +1,12 @@
+import os 
+
+filePath = os.path.realpath(__file__)
+currentDir = os.path.dirname(filePath)
+
 class CSVProvider:
     def __init__(self):
-        self._f = 'C:/Users/taras.ivashchuk/qa_auto/src/config/providers/data.csv'
+        # todo 
+        self._f = f'{currentDir}/data.csv'
         self._separator = ","
         self._delim = "\""
         self._d = {}

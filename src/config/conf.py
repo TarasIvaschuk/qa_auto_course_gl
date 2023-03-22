@@ -1,11 +1,17 @@
 import sys
 import os
 
-sys.path.append('../src/config')
+filePath = os.path.realpath(__file__)
+configDir = os.path.dirname(filePath)
+srcDir = os.path.dirname(configDir)
+rootDir = os.path.dirname(srcDir)
+envConfigsDir = f'{configDir}/env_configs'
+sys.path.append(rootDir)
 
-from providers.CSVProvider import CSVProvider
-from providers.EnvProvider import EnvProvider
-from providers.JsonProvider import JsonProvider
+
+from src.config.providers.CSVProvider import CSVProvider
+from src.config.providers.EnvProvider import EnvProvider
+from src.config.providers.JsonProvider import JsonProvider
 
 
 
@@ -20,7 +26,7 @@ class Config:
         if target is None:
             target = Config.default_env
 
-        json_path = f"../src/config/env_configs/{target}.json"
+        json_path = f"{envConfigsDir}/{target}.json"
         self.providers = [
             JsonProvider(json_path),
             CSVProvider(),
