@@ -1,19 +1,11 @@
-import sys
 import os
-
-filePath = os.path.realpath(__file__)
-configDir = os.path.dirname(filePath)
-srcDir = os.path.dirname(configDir)
-rootDir = os.path.dirname(srcDir)
-envConfigsDir = f'{configDir}/env_configs'
-sys.path.append(rootDir)
-
-
 from src.config.providers.CSVProvider import CSVProvider
 from src.config.providers.EnvProvider import EnvProvider
 from src.config.providers.JsonProvider import JsonProvider
 
-
+filePath = os.path.realpath(__file__)
+configDir = os.path.dirname(filePath)
+envConfigsDir = f'{configDir}/env_configs'
 
 class Config:
     # class props

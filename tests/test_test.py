@@ -1,11 +1,3 @@
-import os
-import sys
-
-filePath = os.path.realpath(__file__)
-testsDir = os.path.dirname(filePath)
-rootDir  = os.path.dirname(testsDir)
-sys.path.append(rootDir)
-
 from src.config.conf import Config
 
 def test_user_age_is_43(user):
