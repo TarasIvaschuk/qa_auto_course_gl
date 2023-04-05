@@ -48,5 +48,5 @@ class Config:
             raise Exception('Varible is not registered in config')
         return v
 
-
-# Config()
+# singleton
+config = Config()
