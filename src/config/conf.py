@@ -25,9 +25,9 @@ class Config:
             EnvProvider(),
         ]
 
-        # register the key what we want to use in the test
-        self.register('BASE_URL')
-        self.register("URL_BASE_API")
+        # register the key what we want to use in the testing
+        self.register('BASE_TEST_URL')
+        self.register("GITHUB_BASIC_SEARCH_REPO_URL")
 
     def register(self, k):
 
@@ -36,7 +36,7 @@ class Config:
             if v is not None:
                 self._d[k] = v
         if self._d.get(k, None) is None:
-            raise Exception('The key is not found in config files')
+            raise Exception(f'The key {k} is not found in config provider files')
         print(f'{k}:{self._d.get(k)} is successfully registered!')
 
     def set(self, k, v):
