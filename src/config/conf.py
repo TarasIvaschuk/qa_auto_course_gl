@@ -28,6 +28,9 @@ class Config:
         # register the key what we want to use in the testing
         self.register('BASE_TEST_URL')
         self.register("GITHUB_BASIC_SEARCH_REPO_URL")
+        self.register("GITHUB_BASIC_CREATE_REPO_URL")
+        self.register("GITHUB_BASIC_DELETE_REPO_URL")
+        self.register("GITHUB_BASIC_UPDATE_REPO_URL")
 
     def register(self, k):
 
