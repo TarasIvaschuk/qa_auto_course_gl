@@ -20,3 +20,8 @@ def user():
   # after test
   print('User removed')
   user.remove()
+
+
+@pytest.fixture(scope = 'module')
+def g_repo_description():
+    return {'desc':"created with python"}
