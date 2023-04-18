@@ -5,6 +5,9 @@ unit_tests/
 #jupyter notebook files
 *.ipynb
 
+#playground pytest test file
+test.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
