@@ -31,6 +31,7 @@ class Config:
         self.register("GITHUB_BASIC_CREATE_REPO_URL")
         self.register("GITHUB_BASIC_DELETE_REPO_URL")
         self.register("GITHUB_BASIC_UPDATE_REPO_URL")
+        self.register("GITHUB_BASE_URL_UI")
 
     def register(self, k):
 
@@ -52,4 +53,4 @@ class Config:
         return v
 
 # singleton
-config = Config()
+CONFIG = Config()

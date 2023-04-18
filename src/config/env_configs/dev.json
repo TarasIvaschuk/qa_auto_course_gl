@@ -1,4 +1,5 @@
 {
   "URL_BASE_API": "dev_url_api",
-  "URL_BASE_UI": "dev_url_ui"
+  "URL_BASE_UI": "dev_url_ui",
+  "GITHUB_BASE_URL_UI":"https://github.com"
 }
