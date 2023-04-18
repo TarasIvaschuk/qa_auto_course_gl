@@ -1,4 +1,3 @@
-from src.config.conf import config
 from src.applications.api.github_client import github_client
 from tests.api.constants import Github_constants, Time_constants
 import time
