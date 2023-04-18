@@ -1,7 +1,9 @@
 import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from src.applications.ui.github_ui_app import GitHub_UI
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 
 class User:
@@ -32,12 +34,10 @@ def g_repo_description():
 
 @pytest.fixture
 def github_ui_app():
-    driver = webdriver.Chrome(
-        service=Service(r'/web_drivers/chromedriver_112chrome.exe')
-    )
+    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     github_ui = GitHub_UI(driver)
     github_ui.launch()
 
     yield github_ui
 
-    github_ui.close()
+    github_ui.quit()
