@@ -1,4 +1,4 @@
-from src.config.conf import config
+from src.config.conf import CONFIG
 from src.applications.api.github_client import github_client
 
 def test_user_age_is_not_43(user):
@@ -12,5 +12,5 @@ def test_user_age_is_42(user):
 
 
 def test_base_test_url():
-    assert config.get('BASE_TEST_URL') == 'test_url'
+    assert CONFIG.get('BASE_TEST_URL') == 'test_url'
 
