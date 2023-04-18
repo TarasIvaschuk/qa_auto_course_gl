@@ -1,25 +1,16 @@
-import sys
+from src.applications.ui.page_objects.sign_in_page import Sign_in_page
+from src.config.conf import CONFIG
 
-class Github_ui:
-  def __init__(self) -> None:
-    print(sys.path)
-    pass
+class GitHub_UI:
+  def __init__(self, driver) -> None:
+    self.driver = driver
+    self.SIGN_IN_PAGE = Sign_in_page(driver)
+    # selp.SIGN_UP_PAGE = ...
 
   def launch(self):
-    pass
+    self.driver.get(CONFIG.get("GITHUB_BASE_URL_UI"))
+    return self
 
   def close(self):
-    pass
-
-  def go_to_sign_in_page(self):
-    pass
-
-  def try_login(self):
-    pass
-
-  def check_error_message(self):
-    pass
-
-
-
-githubui = Github_ui()
+    self.driver.close()
+    return self
