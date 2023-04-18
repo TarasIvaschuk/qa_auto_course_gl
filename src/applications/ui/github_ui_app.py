@@ -11,6 +11,6 @@ class GitHub_UI:
     self.driver.get(CONFIG.get("GITHUB_BASE_URL_UI"))
     return self
 
-  def close(self):
-    self.driver.close()
+  def quit(self):
+    self.driver.quit()
     return self
