@@ -1,13 +1,9 @@
 import os
 import csv
 
-filePath = os.path.realpath(__file__)
-currentDir = os.path.dirname(filePath)
-
-
 class CSVProvider:
     def __init__(self):
-        self._f = f'{currentDir}/data.csv'
+        self._f = f'src/config/env_configs/data.csv'
         self._d = {}
         self._createDict()
 
