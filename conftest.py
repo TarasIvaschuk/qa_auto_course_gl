@@ -5,36 +5,37 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-
 class User:
-  def __init__ (self, age=33):
-    self.age = age
+    def __init__(self, age=33):
+        self.age = age
 
-  def remove(self):
-    self.age = None
+    def remove(self):
+        self.age = None
 
 
 @pytest.fixture
 def user():
-  # before test
-  print('User created')
-  user = User(42)
+    # before test
+    print('User created')
+    user = User(42)
 
-  # pass user object to test
-  yield user
+    # pass user object to test
+    yield user
 
-  # after test
-  print('User removed')
-  user.remove()
+    # after test
+    print('User removed')
+    user.remove()
 
 
-@pytest.fixture(scope = 'module')
-def g_repo_description():
-    return {'desc':"created with python"}
+@pytest.fixture(autouse=True, scope='class')
+def global_vars():
+    return {}
+
 
 @pytest.fixture
 def github_ui_app():
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+    driver = webdriver.Chrome(service=ChromeService(
+        ChromeDriverManager().install()))
     github_ui = GitHub_UI(driver)
     github_ui.launch()
 
