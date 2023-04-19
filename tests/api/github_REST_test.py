@@ -1,5 +1,5 @@
 from src.applications.api.github_client import github_client
-from tests.api.constants import Time_constants
+from tests.constants import Time_constants
 import time
 
 class TestGitHubRestAPI:
