@@ -4,7 +4,7 @@ class CSVProvider:
     def __init__(self):
         self._f = f'src/config/env_configs/data.csv'
         self._d = {}
-        self._createDict()
+        # self._createDict()
 
     def _createDict(self):
         with open(self._f) as f:

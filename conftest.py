@@ -1,5 +1,5 @@
 import pytest
-from src.applications.ui.github_ui_app import GitHub_UI
+from src.applications.ui.github_ui_app import GitHubUI
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
@@ -36,7 +36,7 @@ def global_vars():
 def github_ui_app():
     driver = webdriver.Chrome(service=ChromeService(
         ChromeDriverManager().install()))
-    github_ui = GitHub_UI(driver)
+    github_ui = GitHubUI(driver)
     github_ui.launch()
 
     yield github_ui

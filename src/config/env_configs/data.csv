@@ -1,6 +1,2 @@
 "key", "value"
-"GITHUB_BASIC_SEARCH_REPO_URL", "https://api.github.com/search/repositories"
 "BASE_TEST_URL", "test_url"
-"GITHUB_BASIC_CREATE_REPO_URL", "https://api.github.com/user/repos"
-"GITHUB_BASIC_DELETE_REPO_URL", "https://api.github.com/repos"
-"GITHUB_BASIC_UPDATE_REPO_URL", "https://api.github.com/repos"

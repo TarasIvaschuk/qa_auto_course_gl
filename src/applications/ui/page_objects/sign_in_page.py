@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from src.config.conf import CONFIG
 from selenium.webdriver.common.by import By
 import time
+from src.applications.constants import GitHub as github_c
 
 
 class Sign_in_page:
@@ -15,7 +16,7 @@ class Sign_in_page:
     self.driver = driver
   
   def go_to(self):
-    self.driver.get(CONFIG.get('GITHUB_BASE_URL_UI')+ self.URL)
+    self.driver.get(github_c.UI.BASE_URL+ self.URL)
 
   def try_sign_in(self, username, password):
     username_fld = self.driver.find_element(By.ID, self.USERNAME_FLD)
