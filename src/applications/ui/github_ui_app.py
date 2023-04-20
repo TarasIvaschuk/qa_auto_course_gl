@@ -5,7 +5,7 @@ from src.applications.constants import GitHubURL
 class GitHubUI:
   def __init__(self, driver) -> None:
     self.driver = driver
-    self.SIGN_IN_PAGE = Sign_in_page(driver)
+    self.SIGN_IN_PAGE = Sign_in_page(self)
     # selp.SIGN_UP_PAGE = ...
 
   def launch(self):
