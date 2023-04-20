@@ -26,6 +26,7 @@ class Config:
         ]
 
         # register the key what we want to use in the testing
+        self.register("BROWSER")
 
     def register(self, k):
 

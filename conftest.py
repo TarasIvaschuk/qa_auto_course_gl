@@ -1,8 +1,7 @@
 import pytest
 from src.applications.ui.github_ui_app import GitHubUI
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
+from src.config.conf import CONFIG
+from src.providers.service.browsers.browser_provider import BrowserProvider
 
 
 class User:
@@ -34,8 +33,9 @@ def global_vars():
 
 @pytest.fixture
 def github_ui_app():
-    driver = webdriver.Chrome(service=ChromeService(
-        ChromeDriverManager().install()))
+    browser = CONFIG.get("BROWSER")
+    driver = BrowserProvider().get_driver(browser)
+
     github_ui = GitHubUI(driver)
     github_ui.launch()
 

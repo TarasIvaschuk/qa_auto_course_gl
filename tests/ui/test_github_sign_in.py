@@ -1,5 +1,3 @@
-import pytest
-# from src.applications.ui.github_ui_app import github_ui
 from src.applications.ui.page_objects.sign_in_page import Sign_in_page
 
 

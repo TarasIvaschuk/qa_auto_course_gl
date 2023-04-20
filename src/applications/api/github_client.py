@@ -3,13 +3,14 @@ import os
 import requests
 import urllib.parse as url_parse
 from src.config.conf import CONFIG
-from src.applications.constants import GitHub as github_c
+from src.applications.constants import GitHubURL
 
 
 # to load the token from the .env
 load_dotenv()
 
-class Github_client():
+
+class GitHubClient():
     '''
       the client uses github REST API 
       generate personal token manually
@@ -27,7 +28,7 @@ class Github_client():
             "X-GitHub-Api-Version": "2022-11-28",
             "Content-Type": "application/json"
         }
-       
+
     @property
     def token(self):
         return self._token
@@ -52,35 +53,27 @@ class Github_client():
         return basic_url + question_mark + query_string
 
     def search_repo(self, repo_name):
+        # todo add query params constructor string
         query_params = {
             "q": f"{repo_name} in:name"
         }
-        basic_search_repo_url = github_c.RestAPI.Repo.GITHUB_BASIC_SEARCH_REPO_URL
-        url = self._build_url(basic_search_repo_url, query_params)
+        url = self._build_url(GitHubURL.RestAPI.Repo.SEARCH, query_params)
         res = requests.get(url, headers=self.headers)
         return res
 
-    def create_repo(self, repo_name, description='created with python'):
-        body = {
-            "name": repo_name,
-            "description": description
-        }
-        basic_create_repo_url = github_c.RestAPI.Repo.GITHUB_BASIC_CREATE_REPO_URL
-        res = requests.post(basic_create_repo_url,
-                            headers=self.headers, json=body)
+    def create_repo(self, body):
+        res = requests.post(GitHubURL.RestAPI.Repo.CREATE, headers = self.headers, json = body)
         return res
 
     def delete_repo(self, owner, repo):
-        basic_delete_repo_url = github_c.RestAPI.Repo.GITHUB_BASIC_DELETE_REPO_URL
-        delete_repo_url = basic_delete_repo_url + "/" + owner + "/" + repo
+        delete_repo_url = GitHubURL.RestAPI.Repo.DELETE + "/" + owner + "/" + repo
         res = requests.delete(delete_repo_url, headers=self.headers)
         return res
 
     def update_repo(self, owner, repo, body):
-        basic_update_repo_url = github_c.RestAPI.Repo.GITHUB_BASIC_UPDATE_REPO_URL
-        update_repo_url = basic_update_repo_url + "/" + owner + "/" + repo
+        update_repo_url = GitHubURL.RestAPI.Repo.UPDATE + "/" + owner + "/" + repo
         res = requests.patch(update_repo_url, headers=self.headers, json=body)
         return res
 
 
-github_client = Github_client()
+github_client = GitHubClient()
