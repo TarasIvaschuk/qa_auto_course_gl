@@ -10,3 +10,7 @@ class GitHubURL:
           UPDATE = f"{BASE_URL}/repos"
   class UI:
     BASE_URL = "https://github.com"
+
+
+class TimeConstants:
+  WAIT_SEC = 3

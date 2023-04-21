@@ -1,2 +1,2 @@
 class TimeConstants:
-  SEC2 = 2
+  WAIT_SEC = 2

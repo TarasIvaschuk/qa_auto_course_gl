@@ -44,7 +44,7 @@ class TestGitHubRestAPI:
         assert response.status_code == 201
 
     def test_search_new_repo_total_count_gt_0(self, global_vars):
-        time.sleep(TimeConstants.SEC2)
+        time.sleep(TimeConstants.WAIT_SEC)
         response = github_client.search_repo(self.NEW_REPO)
         global_vars[self.RESPONSE] = response.json()
         assert global_vars.get(self.RESPONSE).get(self.TOTAL_COUNT) > 0
@@ -58,7 +58,7 @@ class TestGitHubRestAPI:
         assert full_name == f'{self.REPO_OWNER}/{self.NEW_REPO}'
 
     def test_new_repo_description(self, global_vars):
-        time.sleep(TimeConstants.SEC2)
+        time.sleep(TimeConstants.WAIT_SEC)
         response = global_vars.get(self.RESPONSE)
         for d in response.get(self.ITEMS):
             if self.DESCRIPTION in d:
@@ -84,11 +84,11 @@ class TestGitHubRestAPI:
         assert response.status_code == 204
 
     def test_search_deleted_new_repo_status_code_success(self, global_vars):
-        time.sleep(TimeConstants.SEC2)
+        time.sleep(TimeConstants.WAIT_SEC)
         response = github_client.search_repo(self.NEW_REPO)
         global_vars[self.RESPONSE] = response.json()
         assert response.status_code == 200
 
     def test_search_deleted_new_repo_count_eq_0(self, global_vars):
-        time.sleep(TimeConstants.SEC2)
+        time.sleep(TimeConstants.WAIT_SEC)
         assert global_vars.get(self.RESPONSE).get(self.TOTAL_COUNT) == 0
