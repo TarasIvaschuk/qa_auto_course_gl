@@ -10,9 +10,11 @@ from src.applications.constants import TimeConstants
 
 class Sign_in_page:
   def __init__(self, app) -> None:
+    self.FAIL_ATTEMPTS_CONTAINER = By.CSS_SELECTOR, '.logged-out'
     self.USERNAME_FLD = By.ID,'login_field'
     self.PASSWORD_FLD = By.ID, 'password'
     self.SIGN_IN_BTN = By.NAME,'commit'
+    self.ERR_MSG = "there have been several failed attempts"
     self.URL = '/login'
     self.app = app
   
@@ -29,5 +31,7 @@ class Sign_in_page:
     return self
 
   def check_error_message(self):
-    # todo
-    return "Error" == "Error"
+    err_container = self.app.wait_for_el(self.FAIL_ATTEMPTS_CONTAINER,timeout = 5)
+    # todo when the ElementWrapper is ready
+    err_msg = err_container.find_element(By.TAG_NAME, 'p').text
+    return self.ERR_MSG in err_msg.casefold()
