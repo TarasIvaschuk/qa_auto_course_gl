@@ -10,7 +10,7 @@ class BaseExcepton(Exception):
     self.msg = msg
 
 
-class BaseAPP:
+class SeleniumWrapper:
   def __init__(self, driver) -> None:
     self.driver = driver
 
@@ -28,8 +28,10 @@ class BaseAPP:
     except:
       raise BaseException (f'{loc} is not found')
 
-  def wait_for_el(self, loc):
+  def wait_for_el(self, loc, timeout = TimeConstants.WAIT_SEC):
+    # todo return some seleniom element wrapper
     try:
-      return WebDriverWait(self.driver, timeout=TimeConstants.WAIT_SEC).until(lambda d: d.find_element(*loc))
+      el = WebDriverWait(self.driver, timeout=timeout).until(lambda d: d.find_element(*loc))
+      return el
     except:
         raise BaseException (f'{loc} is not found')
