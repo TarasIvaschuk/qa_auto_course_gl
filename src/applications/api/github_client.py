@@ -59,8 +59,8 @@ class GitHubClient():
         return res
 
     def delete_repo(self, owner, repo):
-        delete_repo_url = GitHubURL.RestAPI.Repo.DELETE + "/" + owner + "/" + repo
-        res = requests.delete(delete_repo_url, headers=self.headers)
+        url = self._build_url(f"/repos/{owner}/{repo}")
+        res = requests.delete(url, headers=self.headers)
         return res
 
     def update_repo(self, owner, repo, body):
