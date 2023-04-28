@@ -44,7 +44,7 @@ class Config:
     def get(self, k):
         v = self._d.get(k, None)
         if v is None:
-            raise Exception('Varible is not registered in config')
+            raise Exception(f'Varible {k} is not registered in config')
         return v
 
 # todo singleton
