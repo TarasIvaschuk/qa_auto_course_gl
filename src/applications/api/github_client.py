@@ -64,8 +64,8 @@ class GitHubClient():
         return res
 
     def update_repo(self, owner, repo, body):
-        update_repo_url = GitHubURL.RestAPI.Repo.UPDATE + "/" + owner + "/" + repo
-        res = requests.patch(update_repo_url, headers=self.headers, json=body)
+        url = self._build_url(f"/repos/{owner}/{repo}")
+        res = requests.patch(url, headers=self.headers, json=body)
         return res
 
 
