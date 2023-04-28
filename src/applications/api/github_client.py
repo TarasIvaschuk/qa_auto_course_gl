@@ -53,12 +53,10 @@ class GitHubClient():
         return basic_url + question_mark + query_string
 
     def search_repo(self, repo_name):
-        # todo add query params constructor string
         query_params = {
             "q": f"{repo_name} in:name"
         }
-        url = self._build_url(GitHubURL.RestAPI.Repo.SEARCH, query_params)
-        res = requests.get(url, headers=self.headers)
+        res = requests.get(GitHubURL.RestAPI.Repo.SEARCH, params=query_params, headers=self.headers)
         return res
 
     def create_repo(self, body):
