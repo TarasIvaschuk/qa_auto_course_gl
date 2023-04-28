@@ -1,5 +1,6 @@
 {
   "BROWSER": "ff",
   "URL_BASE_UI": "dev_url_ui",
-  "GITHUB_BASE_URL_UI":"https://github.com"
+  "GITHUB_BASE_URL_UI":"https://github.com",
+  "GITHUB_BASE_URL_API":"https://api.github.com"
 }
