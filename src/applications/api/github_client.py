@@ -45,12 +45,8 @@ class GitHubClient():
     def headers(self, headers):
         self._headers = headers
 
-    def _build_url(self, basic_url, query_params):
-        url_parse.quote('_', safe='')
-        query_string = url_parse.urlencode(
-            query_params, quote_via=url_parse.quote)
-        question_mark = '?'
-        return basic_url + question_mark + query_string
+    def _build_url(self, url):
+        return f'{CONFIG.get("GITHUB_BASE_URL_API")}/{url}'
 
     def search_repo(self, repo_name):
         query_params = {
