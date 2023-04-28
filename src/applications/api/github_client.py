@@ -54,7 +54,8 @@ class GitHubClient():
         return res
 
     def create_repo(self, body):
-        res = requests.post(GitHubURL.RestAPI.Repo.CREATE, headers = self.headers, json = body)
+        url = self._build_url("/user/repos")
+        res = requests.post(url, headers = self.headers, json = body)
         return res
 
     def delete_repo(self, owner, repo):
