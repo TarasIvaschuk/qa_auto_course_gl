@@ -27,6 +27,7 @@ class Config:
 
         # register the key what we want to use in the testing
         self.register("BROWSER")
+        self.register("GITHUB_BASE_URL_API")
 
     def register(self, k):
 
