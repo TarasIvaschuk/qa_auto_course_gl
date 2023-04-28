@@ -19,7 +19,10 @@ class TestGitHubRestAPI:
     REPO = 'qa_auto_course_gl'
 
     def test_search_existing_repo_status_code_success(self, global_vars):
-        response = github_client.search_repo(self.REPO)
+        query_params = {
+            "q":f"{self.REPO} in:name"
+        }
+        response = github_client.search_repo(query_params)
         global_vars[self.RESPONSE] = response.json()
         assert response.status_code == 200
 
@@ -27,7 +30,10 @@ class TestGitHubRestAPI:
         assert global_vars.get(self.RESPONSE).get(self.TOTAL_COUNT) > 0
 
     def test_seach_non_existing_repo_status_code_success(self, global_vars):
-        response = github_client.search_repo(self.NEW_REPO)
+        query_params = {
+            "q":f"{self.NEW_REPO} in:name"
+        }
+        response = github_client.search_repo(query_params)
         global_vars[self.RESPONSE] = response.json()
         assert response.status_code == 200
 
@@ -45,7 +51,10 @@ class TestGitHubRestAPI:
 
     def test_search_new_repo_total_count_gt_0(self, global_vars):
         time.sleep(TimeConstants.WAIT_SEC)
-        response = github_client.search_repo(self.NEW_REPO)
+        query_params = {
+            "q":f"{self.NEW_REPO} in:name"
+        }
+        response = github_client.search_repo(query_params)
         global_vars[self.RESPONSE] = response.json()
         assert global_vars.get(self.RESPONSE).get(self.TOTAL_COUNT) > 0
 
@@ -85,7 +94,10 @@ class TestGitHubRestAPI:
 
     def test_search_deleted_new_repo_status_code_success(self, global_vars):
         time.sleep(TimeConstants.WAIT_SEC)
-        response = github_client.search_repo(self.NEW_REPO)
+        query_params = {
+            "q":f"{self.NEW_REPO} in:name"
+        }
+        response = github_client.search_repo(query_params)
         global_vars[self.RESPONSE] = response.json()
         assert response.status_code == 200
 

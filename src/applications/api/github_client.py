@@ -46,13 +46,11 @@ class GitHubClient():
         self._headers = headers
 
     def _build_url(self, url):
-        return f'{CONFIG.get("GITHUB_BASE_URL_API")}/{url}'
+        return f'{CONFIG.get("GITHUB_BASE_URL_API")}{url}'
 
-    def search_repo(self, repo_name):
-        query_params = {
-            "q": f"{repo_name} in:name"
-        }
-        res = requests.get(GitHubURL.RestAPI.Repo.SEARCH, params=query_params, headers=self.headers)
+    def search_repo(self, query_params):
+        url = self._build_url("/search/repositories")
+        res = requests.get(url, params=query_params, headers=self.headers)
         return res
 
     def create_repo(self, body):
